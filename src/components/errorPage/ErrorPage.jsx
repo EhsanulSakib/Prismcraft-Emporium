@@ -1,4 +1,4 @@
-const Root = () => {
+const ErrorPage = () => {
     return (
         <div>
 
@@ -6,4 +6,4 @@ const Root = () => {
     );
 };
 
-export default Root;
+export default ErrorPage;
