@@ -25,35 +25,37 @@ const Navbar = () => {
     }
 
     const links = <>
-        <ul className={`flex flex-col gap-2 duration-300 top-12 absolute lg:static ${open ? 'left-0' : '-left-60'} lg:bg-inherit p-10 lg:p-0 shadow-lg lg:shadow-none no-underline lg:gap-6 text-base lg:text-lg z-10`}>
+        <ul className={`lg:flex flex-row gap-2 duration-300 top-12 absolute lg:static ${open ? 'left-0' : '-left-60'} lg:bg-inherit p-10 lg:p-0 shadow-lg lg:shadow-none no-underline lg:gap-6 text-base lg:text-lg z-10`}>
             <li className="pb-1 lg:pb-0"><NavLink className={'focus:border-b-2 '} to='/'>Home</NavLink></li>
+
             {
                 user ?
-                    <li className="rounded-md lg:hidden focus:border-b-2" onClick={handleSignOut}>Sign Out</li>
+                    <li className="pb-2 lg:pb-0"><NavLink className={'focus:border-b-2'} to='/all-crafts'>All Art & craft</NavLink></li>
                     :
-                    <li className="rounded-md lg:hidden">
+                    ""
+            }
+            {
+                user ?
+                    <li className="pb-2 lg:pb-0"><NavLink className={'focus:border-b-2'} to='/add-crafts'>Add Craft</NavLink></li>
+                    :
+                    ""
+            }
+            {
+                user ?
+                    <li className="pb-2 lg:pb-0"><NavLink className={' focus:border-b-2'} to='/my-crafts'>My Art&Craft</NavLink></li>
+                    :
+                    ""
+            }
+
+            {
+                user ?
+                    <li className="mt-8 lg:mt-0 rounded-md lg:hidden focus:border-b-2" onClick={handleSignOut}>Sign Out</li>
+                    :
+                    <li className="mt-8 lg:mt-0 rounded-md lg:hidden">
                         <NavLink to='/login' className={'focus:border-b-2 '}>Login</NavLink>
                     </li>
             }
             <li className="lg:hidden"><NavLink className={'focus:border-b-2 '} to='/'>Register</NavLink></li>
-            {
-                user ?
-                    <li className="pb-2 lg:pb-0"><NavLink className={'focus:border-b-2'} to='/blogs'>Blogs</NavLink></li>
-                    :
-                    ""
-            }
-            {
-                user ?
-                    <li className="pb-2 lg:pb-0"><NavLink className={'focus:border-b-2'} to='/bookmarks'>Bookmarks</NavLink></li>
-                    :
-                    ""
-            }
-            {
-                user ?
-                    <li className="pb-2 lg:pb-0"><NavLink className={' focus:border-b-2'} to='/profile'>Profile</NavLink></li>
-                    :
-                    ""
-            }
 
 
         </ul>
@@ -86,12 +88,12 @@ const Navbar = () => {
                 <div>
                     {
                         darkMode ?
-                            <button className="btn btn-sm bg-inherit border-none text-white text-2xl pr-1 mt-1 shadow-none" onClick={() => setDarkMode(!darkMode)}>
+                            <button className="btn btn-sm  btn-ghost border-none text-white text-2xl pr-1 mt-1 shadow-none" onClick={() => setDarkMode(!darkMode)}>
                                 <MdLightMode />
                             </button>
 
                             :
-                            <button className="btn btn-sm bg-inherit border-none text-gray-800 text-2xl shadow-none pr-1 mt-1" onClick={() => setDarkMode(!darkMode)}>
+                            <button className="btn btn-sm  btn-ghost border-none text-gray-800 text-2xl shadow-none pr-1 mt-1" onClick={() => setDarkMode(!darkMode)}>
                                 <MdDarkMode />
                             </button>
 
@@ -100,7 +102,7 @@ const Navbar = () => {
                 <div>
                     {
                         user ?
-                            <div className="tooltip tooltip-bottom tooltip-info" data-tip={user.displayName}><img src={user.photoURL} alt="" className="w-[38px] h-[38px] object-cover object-top rounded-full " /></div>
+                            <div className="tooltip tooltip-bottom tooltip-info" data-tip={user.displayName}><img src={user.photoURL} alt="" className="w-10 h-10 object-cover object-top rounded-full " /></div>
 
                             :
                             <FaUserCircle className="text-3xl" />
