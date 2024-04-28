@@ -25,7 +25,7 @@ const Navbar = () => {
     }
 
     const links = <>
-        <ul className={`lg:flex flex-row gap-2 duration-300 top-12 absolute lg:static ${open ? 'left-0' : '-left-60'} lg:bg-inherit p-10 lg:p-0 shadow-lg lg:shadow-none no-underline lg:gap-6 text-base lg:text-lg z-10`}>
+        <ul className={`lg:flex flex-row gap-2 duration-300 top-12 absolute ${darkMode ? 'bg-gray-800' : 'bg-slate-100'} lg:static ${open ? 'left-0' : '-left-60'} p-10 lg:p-0 shadow-lg lg:shadow-none no-underline lg:gap-6 text-base lg:text-lg z-10`}>
             <li className="pb-1 lg:pb-0"><NavLink className={'focus:border-b-2 '} to='/'>Home</NavLink></li>
 
             {
