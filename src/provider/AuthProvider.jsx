@@ -55,7 +55,7 @@ const AuthProvider = ({ children }) => {
             .then(data => setCrafts(data))
     }, [])
 
-    const userInfo = { user, darkMode, setDarkMode, logOut, signIn, handleGoogleSignIn, handleGitHubSignIn }
+    const userInfo = { user, darkMode, setDarkMode, logOut, signIn, handleGoogleSignIn, handleGitHubSignIn, createUser }
     return (
         <AuthContext.Provider value={userInfo}>
             {children}

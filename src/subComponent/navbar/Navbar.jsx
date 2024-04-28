@@ -30,13 +30,13 @@ const Navbar = () => {
 
             {
                 user ?
-                    <li className="pb-2 lg:pb-0"><NavLink className={'focus:border-b-2'} to='/all-crafts'>All Art & craft</NavLink></li>
+                    <li className="pb-2 lg:pb-0"><NavLink className={'focus:border-b-2'} to='/all-craft'>All Art & craft</NavLink></li>
                     :
                     ""
             }
             {
                 user ?
-                    <li className="pb-2 lg:pb-0"><NavLink className={'focus:border-b-2'} to='/add-crafts'>Add Craft</NavLink></li>
+                    <li className="pb-2 lg:pb-0"><NavLink className={'focus:border-b-2'} to='/add-craft'>Add Craft</NavLink></li>
                     :
                     ""
             }
@@ -55,7 +55,7 @@ const Navbar = () => {
                         <NavLink to='/login' className={'focus:border-b-2 '}>Login</NavLink>
                     </li>
             }
-            <li className="lg:hidden"><NavLink className={'focus:border-b-2 '} to='/'>Register</NavLink></li>
+            <li className="lg:hidden"><NavLink className={'focus:border-b-2 '} to='/register'>Register</NavLink></li>
 
 
         </ul>

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { updateProfile } from "firebase/auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -7,11 +7,13 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const { setUser, createUser } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
     const [show, setShow] = useState(false);
+    const navigate = useNavigate()
     const notifyError = errorName => toast.error(errorName);
     const notifySuccess = () => toast.success('User Registered Successfully');
 
@@ -38,13 +40,18 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
-                notifySuccess()
                 updateProfile(result.user, {
                     displayName: name, photoURL: photo
                 })
                     .then(result => {
-                        console.log(result.user)
-                        setUser(result.user)
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'User Added Successfully!',
+                            icon: 'success',
+                            confirmButtonText: 'Cool'
+                        })
+                        setUser(result.user);
+                        navigate('/')
                     })
                     .catch()
             })
