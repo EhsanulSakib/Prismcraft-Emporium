@@ -60,11 +60,11 @@ const Register = () => {
 
 
     return (
-        <div className=" mt-4 md:mt-8 lg:mt-12 flex items-center justify-center">
+        <div className="min-h-[80vh] flex items-center justify-center">
             <Helmet>
                 <title>PrismCraft Emporium | Register</title>
             </Helmet>
-            <div className="mb-8 flex gap-4 rounded-xl flex-col items-center justify-center w-11/12 md:w-1/2 m-auto py-4 md:py-8 lg:py-12 shadow-xl">
+            <div className="mb-8 flex gap-4 rounded-xl flex-col items-center justify-center w-11/12 md:w-1/2 py-4 md:py-8 lg:py-12 shadow-xl">
                 <h2 className="text-2xl">Please Register</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="w-11/12 md:w-3/4">
                     <div className="form-control">

@@ -8,6 +8,7 @@ import AllCrafts from "../components/allCrafts/AllCrafts";
 import MyCrafts from "../components/myCrafts/MyCrafts";
 import AddCrafts from "../components/addCrafts/AddCrafts";
 import PrivateRouter from "./PrivateRouter";
+import { BASE_URL } from "../constVariable/constVariable";
 
 const router = createBrowserRouter([
     {

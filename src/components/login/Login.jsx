@@ -50,11 +50,11 @@ const Login = () => {
     }
 
     return (
-        <div className="pb-8 mt-8 lg:mt-12 flex items-center justify-center">
+        <div className="min-h-[80vh] flex items-center justify-center my-12">
             <Helmet>
                 <title>PrismCraft Emporium | Login</title>
             </Helmet>
-            <div className="flex gap-4 rounded-xl flex-col items-center justify-center w-11/12 md:w-1/2 m-auto py-4 md:py-8 lg:py-12 shadow-xl">
+            <div className="flex gap-4 rounded-xl flex-col items-center justify-center w-11/12 md:w-1/2 py-4 md:py-8 lg:py-12 shadow-xl">
                 <h2 className="text-2xl font-semibold">Please Login</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="w-11/12 md:w-3/4">
                     <div className="form-control">

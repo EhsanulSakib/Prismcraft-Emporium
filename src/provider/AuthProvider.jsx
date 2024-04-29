@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWith
 import app from "../firebase/firebase.config";
 import { createContext, useEffect, useState } from "react";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { BASE_URL } from "../constVariable/constVariable";
 
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
@@ -10,7 +11,7 @@ const AuthProvider = ({ children }) => {
     const [darkMode, setDarkMode] = useState(false)
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-    const [carfts, setCrafts] = useState([])
+    const [crafts, setCrafts] = useState([])
     const GoogleProvider = new GoogleAuthProvider();
     const GitHubProvider = new GithubAuthProvider()
 
@@ -50,12 +51,12 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     useEffect(() => {
-        fetch('/data.json')
+        fetch(`${BASE_URL}crafts`)
             .then(res => res.json())
             .then(data => setCrafts(data))
     }, [])
 
-    const userInfo = { user, darkMode, setDarkMode, logOut, signIn, handleGoogleSignIn, handleGitHubSignIn, createUser }
+    const userInfo = { crafts, setCrafts, loading, user, darkMode, setDarkMode, logOut, signIn, handleGoogleSignIn, handleGitHubSignIn, createUser }
     return (
         <AuthContext.Provider value={userInfo}>
             {children}
