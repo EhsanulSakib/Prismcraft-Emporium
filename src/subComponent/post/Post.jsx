@@ -1,6 +1,7 @@
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { BASE_URL } from "../../constVariable/constVariable";
+import { Link } from "react-router-dom";
 
 
 const Post = ({ post, crafts, setCrafts }) => {
@@ -79,7 +80,7 @@ const Post = ({ post, crafts, setCrafts }) => {
                     <div className="w-full lg:w-1/2 flex self-end flex-col lg:items-end">
                         <p className="mt-8 pb-4 font-bold text-6xl">${price}</p>
                         <div className="flex gap-4 lg:flex-col">
-                            <button onClick={handleDetails} className="btn border-none text-white bg-sky-500 hover:bg-sky-600 text-lg w-1/3 lg:w-44">Update</button>
+                            <Link to={`/update/${_id}`}><button className="btn border-none text-white bg-sky-500 hover:bg-sky-600 text-lg w-1/3 lg:w-44">Update</button></Link>
                             <button onClick={() => handleDelete(_id)} className="btn border-none text-white bg-red-400 hover:bg-red-500 text-lg w-1/3 lg:w-44">Delete</button>
                         </div>
                     </div>

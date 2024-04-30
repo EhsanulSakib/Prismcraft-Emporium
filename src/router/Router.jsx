@@ -10,6 +10,7 @@ import AddCrafts from "../components/addCrafts/AddCrafts";
 import PrivateRouter from "./PrivateRouter";
 import { BASE_URL } from "../constVariable/constVariable";
 import CraftDetails from "../components/craftDetails/CraftDetails";
+import UpdateCraft from "../components/updateCraft/UpdateCraft";
 
 const router = createBrowserRouter([
     {
@@ -19,8 +20,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>,
-                loader: () => fetch(`${BASE_URL}crafts`)
+                element: <Home></Home>
             },
             {
                 path: '/login',
@@ -46,6 +46,11 @@ const router = createBrowserRouter([
             {
                 path: '/my-crafts',
                 element: <PrivateRouter><MyCrafts></MyCrafts></PrivateRouter>
+            },
+            {
+                path: '/update/:id',
+                element: <UpdateCraft></UpdateCraft>,
+                loader: ({ params }) => fetch(`${BASE_URL}crafts/${params.id}`)
             }
 
         ]
