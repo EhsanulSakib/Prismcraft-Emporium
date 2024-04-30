@@ -10,7 +10,7 @@ const Craft = ({ craft }) => {
     }
 
     return (
-        <div className="card rounded-none border border-gray-700 shadow-xl">
+        <div className="card rounded border border-gray-700 shadow-xl">
             <figure><img src={photo} alt="craft" className="w-full h-44 object-cover object-center" /></figure>
             <div className="card-body p-2">
                 <h2 className="card-title font-bold text-xl mb-2">{itemName}</h2>
