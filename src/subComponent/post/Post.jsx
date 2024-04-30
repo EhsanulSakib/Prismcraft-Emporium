@@ -1,10 +1,11 @@
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { BASE_URL } from "../../constVariable/constVariable";
 
 
-const Post = ({ post }) => {
+const Post = ({ post, crafts, setCrafts }) => {
 
-    const { itemName, subCategory, price, rating, customization, stockStatus, processingTime, userEmail, userName, photo, description } = post
+    const { _id, itemName, subCategory, price, rating, customization, stockStatus, processingTime, userEmail, userName, photo, description } = post
     const handleDetails = () => {
         Swal.fire({
             title: 'Contact',
@@ -12,6 +13,38 @@ const Post = ({ post }) => {
             icon: 'info',
             confirmButtonText: 'Ok'
         })
+    }
+
+
+    const handleDelete = _id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`${BASE_URL}crafts/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Crafts has been deleted.",
+                                icon: "success"
+                            })
+                            const remaining = crafts.filter(crft => crft._id !== _id)
+                            setCrafts(remaining)
+                        }
+                    })
+            }
+        });
+
     }
 
     return (
@@ -43,11 +76,11 @@ const Post = ({ post }) => {
                         </div>
                     </div>
 
-                    <div className="w-full flex self-end flex-col lg:items-end">
+                    <div className="w-full lg:w-1/2 flex self-end flex-col lg:items-end">
                         <p className="mt-8 pb-4 font-bold text-6xl">${price}</p>
                         <div className="flex gap-4 lg:flex-col">
                             <button onClick={handleDetails} className="btn border-none text-white bg-sky-500 hover:bg-sky-600 text-lg w-1/3 lg:w-44">Update</button>
-                            <button onClick={handleDetails} className="btn border-none text-white bg-red-400 hover:bg-red-500 text-lg w-1/3 lg:w-44">Delete</button>
+                            <button onClick={() => handleDelete(_id)} className="btn border-none text-white bg-red-400 hover:bg-red-500 text-lg w-1/3 lg:w-44">Delete</button>
                         </div>
                     </div>
                 </div>

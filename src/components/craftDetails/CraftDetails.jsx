@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 const CraftDetails = () => {
     const craft = useLoaderData()
 
@@ -17,6 +18,9 @@ const CraftDetails = () => {
 
     return (
         <div className="min-h-[75vh] w-11/12 my-4 m-auto">
+            <Helmet>
+                <title>PrismCraft Emporium | Craft Details</title>
+            </Helmet>
             <h2 className="text-2xl md:text-3xl lg:text-4xl text-center font-bold">Craft Details</h2>
 
             <div className=" my-4 lg:my-8 flex flex-col gap-4 md:flex-row md:items-center justify-center shadow-2xl p-4 border border-gray-300 rounded-xl">
@@ -46,7 +50,7 @@ const CraftDetails = () => {
                         </div>
                     </div>
 
-                    <div className="w-full flex self-end flex-col lg:items-end">
+                    <div className="w-full lg:w-1/2 flex self-end flex-col lg:items-end">
                         <p className="mt-8 pb-4 font-bold text-6xl">${price}</p>
                         <button onClick={handleDetails} className="btn border-none text-white bg-blue-400 hover:bg-blue-500 text-lg w-full md:w-44">Purchase</button>
                     </div>

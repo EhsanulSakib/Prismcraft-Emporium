@@ -7,14 +7,14 @@ import { Helmet } from "react-helmet";
 AOS.init();
 
 const MyCrafts = () => {
-    const { user, crafts } = useContext(AuthContext)
+    const { user, crafts, setCrafts } = useContext(AuthContext)
 
     const posts = crafts.filter(craft => (craft.userName === user.displayName) && (craft.userEmail === user.email))
 
     return (
         <div className="min-h-[80vh]">
             <Helmet>
-                <title>EchoHaven Realty | Profile</title>
+                <title>PrismCraft Emporium | Profile</title>
             </Helmet>
             <h2 className=" mt-4 lg:mt-8 text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4">User Profile</h2>
             <div className="hero items-center md:justify-between w-11/12 m-auto border border-gray-300 rounded-lg shadow-xl">
@@ -30,7 +30,7 @@ const MyCrafts = () => {
             <div data-aos="fade-up"
                 data-aos-duration="1000">
                 {
-                    posts?.map(post => <Post key={post._id} post={post}></Post>)
+                    posts?.map(post => <Post key={post._id} post={post} crafts={crafts} setCrafts={setCrafts}></Post>)
                 }
             </div>
         </div>

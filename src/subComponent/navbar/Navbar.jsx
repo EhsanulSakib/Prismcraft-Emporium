@@ -101,7 +101,13 @@ const Navbar = () => {
                 <div>
                     {
                         user ?
-                            <div className="tooltip tooltip-bottom tooltip-info" data-tip={user.displayName}><img src={user.photoURL} alt="" className="w-10 h-10 object-cover object-top rounded-full " /></div>
+                            <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+                                <div tabIndex={0} role="button"><img src={user.photoURL} alt="" className="w-10 h-10 object-cover object-top rounded-full " /></div>
+                                <ul tabIndex={0} className={`dropdown-content z-[1] menu p-2 shadow-xl ${darkMode ? "bg-gray-800" : "bg-slate-100"} border border-gray-300 w-52`}>
+                                    <li><p>{user.displayName}</p></li>
+                                    <li><button onClick={handleSignOut} className="btn btn-error">Sign Out</button></li>
+                                </ul>
+                            </div>
 
                             :
                             <FaUserCircle className="text-3xl" />
@@ -112,7 +118,7 @@ const Navbar = () => {
                 <div className="hidden lg:flex">
                     {
                         user ?
-                            <button className=" btn btn-sm btn-active btn-ghost rounded-md text-sm lg:text-base" onClick={handleSignOut}>Sign Out</button>
+                            ""
                             :
                             <button className="btn btn-sm btn-active btn-ghost rounded-md text-sm lg:text-base">
                                 <Link to='/login'>Login</Link>
