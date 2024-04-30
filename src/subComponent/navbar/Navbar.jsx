@@ -49,7 +49,12 @@ const Navbar = () => {
                         <NavLink to='/login' className={'focus:border-b-2 '}>Login</NavLink>
                     </li>
             }
-            <li className="lg:hidden"><NavLink className={'focus:border-b-2 '} to='/register'>Register</NavLink></li>
+            {
+                user ?
+                    ""
+                    :
+                    <li className="lg:hidden"><NavLink className={'focus:border-b-2 '} to='/register'>Register</NavLink></li>
+            }
 
 
         </ul>
@@ -116,7 +121,12 @@ const Navbar = () => {
                 </div >
 
                 <div className="hidden lg:flex">
-                    <button className=" btn btn-sm btn-active btn-ghost rounded-md text-sm lg:text-base" ><Link to='/register'>Register</Link></button>
+                    {
+                        user ?
+                            ""
+                            :
+                            <button className=" btn btn-sm btn-active btn-ghost rounded-md text-sm lg:text-base" ><Link to='/register'>Register</Link></button>
+                    }
                 </div>
             </div>
         </nav>

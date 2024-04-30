@@ -9,6 +9,7 @@ import MyCrafts from "../components/myCrafts/MyCrafts";
 import AddCrafts from "../components/addCrafts/AddCrafts";
 import PrivateRouter from "./PrivateRouter";
 import { BASE_URL } from "../constVariable/constVariable";
+import CraftDetails from "../components/craftDetails/CraftDetails";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
             {
                 path: '/all-craft',
                 element: <AllCrafts></AllCrafts>
+            },
+            {
+                path: '/all-craft/:id',
+                element: <PrivateRouter><CraftDetails></CraftDetails></PrivateRouter>,
+                loader: ({ params }) => fetch(`${BASE_URL}crafts/${params.id}`)
             },
             {
                 path: '/add-craft',

@@ -37,9 +37,9 @@ const AddCrafts = () => {
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'User Added Successfully!',
+                        text: 'Item Posted Successfully!',
                         icon: 'success',
-                        confirmButtonText: 'Cool'
+                        confirmButtonText: 'Ok'
                     })
                 }
             })
@@ -125,7 +125,7 @@ const AddCrafts = () => {
                     <h2 className="mb-2 font-bold text-lg">Short Description:</h2>
                     <input type="text" placeholder="Enter Short Description about the Product" className="input rounded-none input-bordered w-full bg-inherit h-24" name="description" />
                 </div>
-                <input type="submit" value="Add the Craft" className="btn text-lg btn-info font-bold text-white col-span-2 py-2 w-full" />
+                <input type="submit" value="Add" className="btn text-lg btn-info font-bold text-white col-span-2 py-2 w-full" />
             </form>
         </div>
     );
